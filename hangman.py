@@ -1,3 +1,4 @@
+# man sadra nistam
 import random
 import string
 import pics
