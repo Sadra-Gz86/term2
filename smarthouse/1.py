@@ -2,10 +2,11 @@ from asc import *
 from random import choice
 from time import sleep
 import pygame
+# from termcolor import colored, cprint
 
 player = pygame.mixer
 player.init()
-player.music.load('1.mp3')
+
 
 
 def play(pc, user):
@@ -41,17 +42,20 @@ def main_function(item):
     elif item == 'game':
         rsp()
     elif item == 'sleep':
+        player.music.load('2.mp3')
+        player.music.play()
         for i in range(1, 6):
             print(f"sleeping for {i} seconds")
             sleep(1)
+        player.music.stop()
         main_function('bedroom')
     elif item in foods and item not in ['exit', 'kitchen']:
+        player.music.load('1.mp3')
         print(names[item])
         foods.remove(item)
+        player.music.play()
         sleep(1)
         main_function('fridge')
-    if item=='house':
-        player.music.play()
     print(names[item])
     item = get_item(actions[item])
     main_function(item)
